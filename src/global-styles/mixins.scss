@@ -1,0 +1,92 @@
+@import "./variables.scss";
+
+@mixin wrapper {
+    width: 85%;
+    margin: 0 auto;
+}
+
+@mixin smallButton {
+    width: 100px;
+    padding: 5px;
+    font-size: $sizeXXS;
+    border: none;
+    border-radius: $radius;
+    background-color: $greyLight;
+    color: $blueNormal;
+    font-weight: 700;
+    transition: $transition;
+    cursor: pointer;
+
+    @media screen and (min-width:map-get($breakpoints, medium)) {
+        font-size: $sizeXS;
+    }
+
+    @media screen and (min-width:map-get($breakpoints, large)) {
+        &:hover {
+            background-color: $blueNormal;
+            color: $greyLight;
+        }
+    }
+}
+
+@mixin standardButton {
+    width: 80px;
+    padding: 5px;
+    font-size: $sizeXXS;
+    border: none;
+    border-radius: $radius;
+    background-color: darken($blueNormal, 10%);
+    color: $greyLight;
+    cursor: pointer;
+    transition: 0.3s;
+
+    @media screen and (min-width:map-get($breakpoints, small)) {
+        font-size: $sizeXXS*1.1;
+
+    }
+
+    @media screen and (min-width:map-get($breakpoints, large)) {
+        font-size: $sizeXXS*1.2;
+
+        &:hover {
+            background-color: lighten($blueNormal, 10%);
+
+        }
+    }
+
+
+
+}
+
+@mixin backButton {
+    width: 80px;
+    padding: 5px;
+    font-size: $s-fz;
+    border: none;
+    border-radius: $radius;
+    background-color: lighten($worning, 15%);
+    color: $white;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+        background-color: darken($worning, 5%);
+
+    }
+
+    @media screen and (min-width:map-get($breakpoints, small)) {
+        font-size: $s-fz*1.1;
+
+    }
+}
+
+@mixin input {
+    width: 200px;
+    font-size: $s-fz*1.2;
+    border: none;
+    background-color: transparent;
+    border: 1px solid $box;
+    border-radius: $radius;
+    padding: 5px;
+    color: $background;
+}

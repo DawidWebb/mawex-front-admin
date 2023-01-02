@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+
+$roboto: 'Roboto mono';
+$radius: 5px;
+$bigRadius: 20px;
+$transition: 0.3s;
+
+$sizeXXS: 14px;
+$sizeXS: 16px;
+$sizeS: 18px;
+$sizeM: 20px;
+$sizeL: 22px;
+$sizeXL: 24px;
+$sizeXXL: 28px;
+$sizeXXXL: 36px;
+
+$black: rgb(20, 20, 20);
+$greyDarness: rgb(47, 42, 42);
+$greyDark: #383e40;
+$greyLight: #f8f8f8;
+$blueNormal: rgb(23, 23, 184);
+
+$breakpoints :(xSmall: 480px,
+    small: 640px,
+    medium: 800px,
+    large: 1040px,
+    xlarge: 1280px,
+)
