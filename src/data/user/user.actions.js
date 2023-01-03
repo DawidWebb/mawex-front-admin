@@ -8,7 +8,7 @@ export const USER_LOGIN = "USER_LOGIN";
 
 export const userLogin = (userData) => async (dispatch) => {
 	dispatch(addSpinner());
-	const { data } = await request.post("auth/login", userData, {
+	const { data } = await request.post("users", userData, {
 		headers: { "Content-Type": "application/json" },
 		credentials: "include",
 		withCredentials: true,
@@ -19,29 +19,16 @@ export const userLogin = (userData) => async (dispatch) => {
 		dispatch(timeoutShowTask(data.error));
 	} else {
 		dispatch(removeSpinner());
-		dispatch(sessionItemSet(data.data));
+		dispatch(sessionItemSet(data.user.id));
 		dispatch({
 			type: USER_LOGIN,
-			payload: data.data,
+			payload: data.user,
 		});
 	}
 };
 export const addLogout = () => async (dispatch) => {
-	dispatch(addSpinner());
-	const { data } = await request.get("auth/logout", {
-		headers: { "Content-Type": "application/json" },
-		credentials: "include",
-		withCredentials: true,
+	dispatch(sessionItemDel());
+	dispatch({
+		type: USER_LOGOUT,
 	});
-
-	if (data.status === 200) {
-		dispatch(removeSpinner());
-		dispatch(sessionItemDel());
-		dispatch({
-			type: USER_LOGOUT,
-		});
-	} else {
-		dispatch(removeSpinner());
-		dispatch(timeoutShowTask(data.error || data.message));
-	}
 };
