@@ -66,7 +66,8 @@ const AddItemForm = ({ isAddNewsModalOpen, setIsAddNewsModalOpen, isEdited = fal
                         resetForm,
                         setFieldValue,
                     }) => (
-                        <form onSubmit={ handleSubmit } encType="multipart/form-data">
+                        //encType= "multipart/form-data"
+                        <form onSubmit={ handleSubmit } >
                             <div className={ styles.element }>
                                 <input
                                     type="input"
@@ -76,7 +77,7 @@ const AddItemForm = ({ isAddNewsModalOpen, setIsAddNewsModalOpen, isEdited = fal
                                     value={ values.imgPath }
                                     placeholder="link do zdjęcia na ftp"
                                 />
-                                <p> { errors.date && touched.date && errors.date }</p>
+                                <p> { errors.imgPath && touched.imgPath && errors.imgPath }</p>
                             </div>
                             <div className={ styles.element }>
                                 <input
@@ -92,8 +93,8 @@ const AddItemForm = ({ isAddNewsModalOpen, setIsAddNewsModalOpen, isEdited = fal
 
                             <div className={ styles.element }>
                                 <textarea
-                                    type="text"
                                     name="content1"
+                                    type="text"
                                     onChange={ handleChange }
                                     onBlur={ handleBlur }
                                     value={ values.content1 }
@@ -105,8 +106,8 @@ const AddItemForm = ({ isAddNewsModalOpen, setIsAddNewsModalOpen, isEdited = fal
                             </div>
                             <div className={ styles.element }>
                                 <textarea
-                                    type="text"
                                     name="content2"
+                                    type="text"
                                     onChange={ handleChange }
                                     onBlur={ handleBlur }
                                     value={ values.content2 }
@@ -124,7 +125,7 @@ const AddItemForm = ({ isAddNewsModalOpen, setIsAddNewsModalOpen, isEdited = fal
                                     value={ values.link }
                                     placeholder="link do atrukułu"
                                 />
-                                <p> { errors.signature && touched.signature && errors.signature }</p>
+                                <p> { errors.link && touched.link && errors.link }</p>
                             </div>
                             <div className={ styles.element }>
                                 <input
@@ -135,7 +136,7 @@ const AddItemForm = ({ isAddNewsModalOpen, setIsAddNewsModalOpen, isEdited = fal
                                     value={ values.userName }
                                     placeholder="Podpis"
                                 />
-                                <p> { errors.signature && touched.signature && errors.signature }</p>
+                                <p> { errors.userName && touched.userName && errors.userName }</p>
                             </div>
                             <div className={ styles.element }>
                                 <input

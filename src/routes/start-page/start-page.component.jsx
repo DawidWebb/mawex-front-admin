@@ -15,12 +15,12 @@ const StartPage = () => {
         } else {
             return;
         }
-    }, [blogItems.length, dispatch]);
+    }, [blogItems, dispatch]);
 
     const blogItemsViev = !blogItems.length ? (
         <p>Brak elementów do wyświetlenia</p>
     ) : (
-        blogItems.map((item) => <BlogItem key={ item._id } itemData={ item } />)
+        blogItems.map((item) => <BlogItem key={ item._id } itemData={ item } />).reverse()
     );
 
     return (
