@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button } from "../index";
+import { AddItemForm, Button } from "../index";
 import { addLogout } from "../../data/user";
 import { sessionItemCheck } from "../../data/session-storage";
 import styles from "./header.module.scss";
@@ -13,6 +13,8 @@ const Header = () => {
 
 	const dispatch = useDispatch();
 
+	const [isAddNewsModalOpen, setIsAddNewsModalOpen] = useState(false);
+
 	useEffect(() => {
 		dispatch(sessionItemCheck());
 	}, [dispatch]);
@@ -21,12 +23,23 @@ const Header = () => {
 		dispatch(addLogout());
 	};
 
+	const handleAddPostItem = () => {
+		setIsAddNewsModalOpen(true);
+	};
+
 	return (
 		<div className={ styles.wrapper }>
 			<div className={ styles.inside }>
 				<h3>Administracja strony Mawex</h3>
-				{ session || user.length ? <Button name="wyloguj" type="button" onClick={ handleLogoutUser } /> : "" }
+				<div className={ styles.buttons }>
+					{ session || user.length ? <Button name="wyloguj" type="button" onClick={ handleLogoutUser } /> : "" }
+					{ session || user.length ? <Button name="dodaj post" type="button" onClick={ handleAddPostItem } /> : "" }
+				</div>
 			</div>
+			<AddItemForm
+				isAddNewsModalOpen={ isAddNewsModalOpen }
+				setIsAddNewsModalOpen={ setIsAddNewsModalOpen }
+			/>
 		</div>
 	);
 };

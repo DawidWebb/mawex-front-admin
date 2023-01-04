@@ -1,8 +1,12 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { deleteMainInfoItem } from "../../data/blog-items";
 import { AddItemForm, Button } from "..";
 import styles from "./blog-item.module.scss";
 
 const BlogItem = ({ itemData }) => {
+
+    const dispatch = useDispatch();
 
     const { _id, title,
         content1,
@@ -16,7 +20,10 @@ const BlogItem = ({ itemData }) => {
 
     const [isAddNewsModalOpen, setIsAddNewsModalOpen] = useState(false);
 
-    const handleDeleteItem = () => { };
+    const handleDeleteItem = () => {
+        dispatch(deleteMainInfoItem(_id));
+    };
+
     const handleEditItem = () => {
         setIsAddNewsModalOpen({
             id: _id,

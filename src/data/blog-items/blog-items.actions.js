@@ -68,7 +68,7 @@ export const editMainInfoItem = (mainInfoItemData) => async (dispatch) => {
 
 export const deleteMainInfoItem = (id) => async (dispatch) => {
 	dispatch(addSpinner());
-	const { data, status } = await request.delete(`info-main/${id}`, {
+	const { data, status } = await request.delete(`posts/${id}`, {
 		headers: { "Content-Type": "application/json" },
 		credentials: "include",
 		withCredentials: true,
