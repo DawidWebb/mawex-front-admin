@@ -11,8 +11,6 @@ const LoginPage = () => {
     const login = useSelector((store) => store.user);
     const session = useSelector((store) => store.session);
 
-    console.log(session);
-
     const pageViev = !session && !login.length ? (
 
         <div className={ styles.loginBox }>
