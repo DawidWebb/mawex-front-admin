@@ -1,2 +1,10 @@
 export { blogItemsReducer } from "./blog-items.reducer";
-export { getAllBlogItems, addMainInfoItem, editMainInfoItem, deleteMainInfoItem } from "./blog-items.actions";
+export { photoItemReducer } from "./photo-item.reducer";
+export {
+	getAllBlogItems,
+	addMainInfoItem,
+	editMainInfoItem,
+	deleteMainInfoItem,
+	addPhotoFile,
+	clearPhotoFile,
+} from "./blog-items.actions";
