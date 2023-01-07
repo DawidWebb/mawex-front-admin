@@ -61,21 +61,21 @@
 @mixin backButton {
     width: 80px;
     padding: 5px;
-    font-size: $s-fz;
+    font-size: $sizeXXS;
     border: none;
     border-radius: $radius;
-    background-color: lighten($worning, 15%);
-    color: $white;
+    background-color: lighten(red, 15%);
+    color: $greyLight;
     cursor: pointer;
     transition: 0.3s;
 
     &:hover {
-        background-color: darken($worning, 5%);
+        background-color: darken(red, 5%);
 
     }
 
     @media screen and (min-width:map-get($breakpoints, small)) {
-        font-size: $s-fz*1.1;
+        font-size: $sizeXXS*1.1;
 
     }
 }

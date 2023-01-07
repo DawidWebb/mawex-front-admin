@@ -49,7 +49,7 @@ const BlogItem = ({ itemData }) => {
                 <img src={ `${ imgPath }` } alt={ `${ imgPath.slice(12, 40) }` } />
             </div>
             <div className={ styles.content }>
-                <p>tytuł: { title }</p>
+                <p className={ styles.title }>tytuł: { title }</p>
                 <div className={ styles.content1 }>
                     { vievContent1 }
                 </div>
