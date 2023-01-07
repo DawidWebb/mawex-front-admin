@@ -81,12 +81,17 @@
 }
 
 @mixin input {
-    width: 200px;
-    font-size: $s-fz*1.2;
+    width: 240px;
+    font-size: $sizeXXS/1.1;
     border: none;
     background-color: transparent;
-    border: 1px solid $box;
+    border: 1px solid $greyLight;
     border-radius: $radius;
     padding: 5px;
-    color: $background;
+    color: $greyLight;
+
+    @media screen and (min-width:map-get($breakpoints, large)) {
+        width: 320px;
+        font-size: $sizeXS;
+    }
 }

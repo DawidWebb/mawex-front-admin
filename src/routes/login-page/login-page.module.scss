@@ -1,1 +1,83 @@
 @import "../../global-styles/common.scss";
+
+.wrapper {
+    @include wrapper;
+
+    .inside {
+
+
+        .loginBox {
+
+            margin-top: 60px;
+            padding: 20px;
+            border: 1px solid lighten($greyDark, 25%);
+            border-radius: $radius;
+            background-color: lighten($greyDark, 25%);
+
+            p {
+                margin-bottom: 20px;
+                color: $greyLight;
+                text-align: center;
+
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                input {
+                    @include input;
+                }
+
+                p {}
+
+                button {
+                    @include standardButton;
+                }
+            }
+        }
+    }
+
+    @media screen and (min-width:map-get($breakpoints, xSmall)) {
+        .inside {
+            .loginBox {
+                width: 70%;
+                margin: 60px auto 0 auto;
+            }
+        }
+    }
+
+    @media screen and (min-width:map-get($breakpoints, small)) {
+        .inside {
+            .loginBox {
+                width: 50%;
+            }
+        }
+    }
+
+    @media screen and (min-width:map-get($breakpoints, large)) {
+        .inside {
+            .loginBox {
+                width: 40%;
+
+                p {
+                    font-size: $sizeL;
+                }
+
+            }
+        }
+    }
+
+    @media screen and (min-width:map-get($breakpoints, xlarge)) {
+        .inside {
+            .loginBox {
+                width: 35%;
+
+
+
+            }
+        }
+    }
+}

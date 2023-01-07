@@ -59,7 +59,7 @@ const LoginPage = () => {
                             value={ values.password }
                             placeholder="hasło"
                         />
-                        <p> { errors.email && touched.email && errors.email }</p>
+                        <p> { errors.password && touched.password && errors.password }</p>
 
                         <Button type="submit" name="zaloguj" />
                     </form>
