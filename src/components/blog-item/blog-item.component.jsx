@@ -4,6 +4,8 @@ import { deleteMainInfoItem } from "../../data/blog-items";
 import { AddItemForm, Button } from "..";
 import styles from "./blog-item.module.scss";
 
+const imgSource = process.env.REACT_APP_IMAGE_SOURCE;
+
 const BlogItem = ({ itemData }) => {
 
     const dispatch = useDispatch();
@@ -15,6 +17,7 @@ const BlogItem = ({ itemData }) => {
         userName,
         date,
         imgPath } = itemData;
+    console.log(imgSource, imgPath);
 
     const linkViev = link === "" ? null : <a href={ `${ link }` }>link do źródła</a>;
 
@@ -46,7 +49,7 @@ const BlogItem = ({ itemData }) => {
     return (
         <div className={ styles.itemWrapper }>
             <div className={ styles.image }>
-                <img src={ `${ imgPath }` } alt={ `${ imgPath.slice(12, 40) }` } />
+                <img src={ `${ imgSource }/${ imgPath }` } alt={ `${ imgPath.slice(12, 40) }` } />
             </div>
             <div className={ styles.content }>
                 <p className={ styles.title }>tytuł: { title }</p>

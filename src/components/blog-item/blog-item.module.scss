@@ -68,6 +68,30 @@
     }
 
     @media screen and (min-width:map-get($breakpoints, large)) {
+
+        .image {
+
+            height: 30vw;
+
+        }
+
+        .content {
+            padding: 20px;
+
+            p {
+                font-size: calc($sizeXS);
+            }
+        }
+    }
+
+    @media screen and (min-width:map-get($breakpoints, xlarge)) {
+
+        .image {
+
+            height: 20vw;
+
+        }
+
         .content {
             padding: 20px;
 

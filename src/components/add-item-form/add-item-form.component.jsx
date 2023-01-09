@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { editMainInfoItem, addMainInfoItem, addPhotoFile } from "../../data/blog-items";
+import { editMainInfoItem, addMainInfoItem, addPhotoFile, clearPhotoFile } from "../../data/blog-items";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Button, Modal } from "..";
@@ -54,6 +54,11 @@ const AddItemForm = ({ isAddNewsModalOpen, setIsAddNewsModalOpen, isEdited = fal
     const handleOnSubmit = (values, { setSubmitting }) => {
         if (isEdited) {
             values.id = isEdited.id;
+            if (!photoItem) {
+                values.imgPath = isEdited.imgPath;
+            } else {
+                values.imgPath = `images/blog/${ photoItem }`;
+            }
             dispatch(editMainInfoItem(values));
         } else {
             values.imgPath = `images/blog/${ photoItem }`;
@@ -61,6 +66,8 @@ const AddItemForm = ({ isAddNewsModalOpen, setIsAddNewsModalOpen, isEdited = fal
 
         }
         setIsAddNewsModalOpen(false);
+        dispatch(clearPhotoFile());
+        setFile("");
     };
 
     const handleCloseAddItemModal = () => {
@@ -68,6 +75,9 @@ const AddItemForm = ({ isAddNewsModalOpen, setIsAddNewsModalOpen, isEdited = fal
             setIsEdited(false);
         }
         setIsAddNewsModalOpen(false);
+        dispatch(clearPhotoFile());
+        setFile("");
+
     };
 
     return (
@@ -83,7 +93,7 @@ const AddItemForm = ({ isAddNewsModalOpen, setIsAddNewsModalOpen, isEdited = fal
                         >
                             <div className={ styles.uploadWrapper }>
                                 <input className={ styles.fileInput } id="file-upload" type="file" onChange={ handleSetFile } />
-                                <label htmlFor="file-upload">{ file === "" ? "Wybierz zdjęcie" : " Zmień zdjęcie" }</label>
+                                <label htmlFor="file-upload">{ file === "" && !isEdited ? "Wybierz zdjęcie" : " Zmień zdjęcie" }</label>
                             </div>
 
                             <div className={ styles.customUpload }>
