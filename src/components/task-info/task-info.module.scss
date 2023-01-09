@@ -1,0 +1,10 @@
+@import "../../global-styles/common.scss";
+
+.inside {
+    background-color: $blueNormal;
+    border-radius: $radius;
+
+    p {
+        color: $greyLight
+    }
+}

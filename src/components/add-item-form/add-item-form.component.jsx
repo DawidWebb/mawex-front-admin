@@ -83,7 +83,7 @@ const AddItemForm = ({ isAddNewsModalOpen, setIsAddNewsModalOpen, isEdited = fal
                         >
                             <div className={ styles.uploadWrapper }>
                                 <input className={ styles.fileInput } id="file-upload" type="file" onChange={ handleSetFile } />
-                                <label for="file-upload">{ file === "" ? "Wybierz zdjęcie" : " Zmień zdjęcie" }</label>
+                                <label htmlFor="file-upload">{ file === "" ? "Wybierz zdjęcie" : " Zmień zdjęcie" }</label>
                             </div>
 
                             <div className={ styles.customUpload }>
@@ -104,7 +104,7 @@ const AddItemForm = ({ isAddNewsModalOpen, setIsAddNewsModalOpen, isEdited = fal
 
                     </div>
                     { !photoItem ? (
-                        <p>Dodaj i zapisz zdjęcie aby edytować treść"</p>
+                        <p style={ { color: "red" } }>Dodaj i zapisz zdjęcie aby edytować treść</p>
                     ) : (
                         <Formik
                             enableReinitialize
