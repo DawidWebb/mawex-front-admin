@@ -81,36 +81,30 @@ const AddItemForm = ({ isAddNewsModalOpen, setIsAddNewsModalOpen, isEdited = fal
                             className={ styles.addImage }
                             onSubmit={ handleUploadFile }
                         >
-                            <input id="file-upload" type="file" onChange={ handleSetFile } />
-                            <label htmlFor="file-upload" className={ styles.customUpload }>
+                            <div className={ styles.uploadWrapper }>
+                                <input className={ styles.fileInput } id="file-upload" type="file" onChange={ handleSetFile } />
+                                <label for="file-upload">{ file === "" ? "Wybierz zdjęcie" : " Zmień zdjęcie" }</label>
+                            </div>
 
-                                <div>
-                                    <p className={ styles.fileName }>{ file.name }</p>
-                                    <p
-                                        style={ { display: `${ file === "" ? "none" : "inline" }` } }
-                                        className={ styles.fileName }
-                                    >
-                                        { Math.floor(file.size / 1000) }KB
-                                    </p>
-                                </div>
-                            </label>
-                            { !photoItem ? <Button type="button" name="wyjdź" onClick={ handleCloseAddItemModal } /> : "" }
-                            <Button type="submit" name="zapisz" />
+                            <div className={ styles.customUpload }>
+                                <p className={ styles.fileName }>{ file.name }</p>
+                                <p
+                                    style={ { display: `${ file === "" ? "none" : "inline" }` } }
+                                    className={ styles.fileName }
+                                >
+                                    { Math.floor(file.size / 1000) }KB
+                                </p>
+                            </div>
+
+                            <div className={ styles.buttons }>
+                                { !photoItem ? <Button type="button" name="wyjdź" onClick={ handleCloseAddItemModal } /> : "" }
+                                <Button type="submit" name="zapisz" />
+                            </div>
                         </form>
 
                     </div>
                     { !photoItem ? (
-                        <p
-                            className={ styles.statusInfo }
-                            style={ {
-                                color: `${ !fileNameData ? "red" : "green" }`,
-                                // display: `${ !item ? "inline-block" : "none" }`,
-                            } }
-                        >
-                            { !fileNameData
-                                ? "Dodaj i zapisz zdjęcie aby edytować treść"
-                                : "Zdjęcie dodane" }
-                        </p>
+                        <p>Dodaj i zapisz zdjęcie aby edytować treść"</p>
                     ) : (
                         <Formik
                             enableReinitialize
@@ -131,7 +125,7 @@ const AddItemForm = ({ isAddNewsModalOpen, setIsAddNewsModalOpen, isEdited = fal
                                 setFieldValue,
                             }) => (
 
-                                <form onSubmit={ handleSubmit } >
+                                <form className={ styles.addContent } onSubmit={ handleSubmit } >
                                     <div className={ styles.element }>
                                         <input
                                             type="text"
@@ -152,8 +146,7 @@ const AddItemForm = ({ isAddNewsModalOpen, setIsAddNewsModalOpen, isEdited = fal
                                             onBlur={ handleBlur }
                                             value={ values.content1 }
                                             placeholder="Tekst"
-                                            cols="30"
-                                            rows="10"
+
                                         />
                                         <p> { errors.content1 && touched.content1 && errors.content1 }</p>
                                     </div>
@@ -165,12 +158,9 @@ const AddItemForm = ({ isAddNewsModalOpen, setIsAddNewsModalOpen, isEdited = fal
                                             onBlur={ handleBlur }
                                             value={ values.content2 }
                                             placeholder="Tekst"
-                                            cols="30"
-                                            rows="10"
+
                                         />
-                                    </div>
-                                    <div className={ styles.element }>
-                                        <input
+                                        <input className={ styles.link }
                                             type="text"
                                             name="link"
                                             onChange={ handleChange }
@@ -178,28 +168,30 @@ const AddItemForm = ({ isAddNewsModalOpen, setIsAddNewsModalOpen, isEdited = fal
                                             value={ values.link }
                                             placeholder="link do atrukułu"
                                         />
-                                        <p> { errors.link && touched.link && errors.link }</p>
                                     </div>
+
                                     <div className={ styles.element }>
-                                        <input
-                                            type="text"
-                                            name="userName"
-                                            onChange={ handleChange }
-                                            onBlur={ handleBlur }
-                                            value={ values.userName }
-                                            placeholder="Podpis"
-                                        />
-                                        <p> { errors.userName && touched.userName && errors.userName }</p>
-                                    </div>
-                                    <div className={ styles.element }>
-                                        <input
-                                            type="date"
-                                            name="date"
-                                            onChange={ handleChange }
-                                            onBlur={ handleBlur }
-                                            value={ values.date }
-                                        />
-                                        <p> { errors.date && touched.date && errors.date }</p>
+                                        <div >
+                                            <input
+                                                type="text"
+                                                name="userName"
+                                                onChange={ handleChange }
+                                                onBlur={ handleBlur }
+                                                value={ values.userName }
+                                                placeholder="Podpis"
+                                            />
+                                            <p> { errors.userName && touched.userName && errors.userName }</p>
+                                        </div>
+                                        <div >
+                                            <input
+                                                type="date"
+                                                name="date"
+                                                onChange={ handleChange }
+                                                onBlur={ handleBlur }
+                                                value={ values.date }
+                                            />
+                                            <p> { errors.date && touched.date && errors.date }</p>
+                                        </div>
                                     </div>
 
                                     <div className={ styles.buttons }>
@@ -214,7 +206,7 @@ const AddItemForm = ({ isAddNewsModalOpen, setIsAddNewsModalOpen, isEdited = fal
                 </div>
             </div>
 
-        </Modal>
+        </Modal >
     );
 
 };

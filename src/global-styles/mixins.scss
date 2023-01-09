@@ -32,7 +32,7 @@
 @mixin standardButton {
     width: 80px;
     padding: 5px;
-    font-size: $sizeXXS;
+    font-size: calc($sizeXXS/1.2);
     border: none;
     border-radius: $radius;
     background-color: darken($blueNormal, 10%);
@@ -41,12 +41,12 @@
     transition: 0.3s;
 
     @media screen and (min-width:map-get($breakpoints, small)) {
-        font-size: $sizeXXS*1.1;
+        font-size: calc($sizeXXS*1.1);
 
     }
 
     @media screen and (min-width:map-get($breakpoints, large)) {
-        font-size: $sizeXXS*1.2;
+        font-size: calc($sizeXXS*1.2);
 
         &:hover {
             background-color: lighten($blueNormal, 10%);
@@ -75,8 +75,7 @@
     }
 
     @media screen and (min-width:map-get($breakpoints, small)) {
-        font-size: $sizeXXS*1.1;
-
+        font-size: calc($sizeXXS*1.1)
     }
 }
 
